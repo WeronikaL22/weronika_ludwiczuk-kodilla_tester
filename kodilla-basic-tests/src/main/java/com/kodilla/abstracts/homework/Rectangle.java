@@ -1,20 +1,24 @@
 package com.kodilla.abstracts.homework;
 
 public class Rectangle extends Shape{
+    private double width;
+    private double height;
 
-    public Rectangle(int width, int heigth) {
+    public Rectangle(double width, double height) {
+    this.height= height;
+    this.width= width;
 
-        super(width, heigth);
     }
 
     @Override
-    public int calculateArea() {
+    public double calculateArea() {
 
-        return getHeigth()*getWidth();
+        return this.height*this.width;
     }
 
     @Override
-    public int calculatePerimeter() {
-        return getWidth()*2 + getHeigth()*2;
+    public double calculatePerimeter() {
+        return 2*this.height+2*this.width;
     }
+
 }

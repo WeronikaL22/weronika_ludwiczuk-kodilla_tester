@@ -1,23 +1,29 @@
 package com.kodilla.abstracts.homework;
 
 public class Triangle extends Shape {
+    private double width;
+    private double height;
+    private double sidea;
+    private double sideb;
+    private double sidec;
 
-    public Triangle(int width, int heigth) {
 
-        super(width, heigth);
+
+    public Triangle(double width, double height, double sidea,double sideb, double sidec) {
+        this.width = width;
+        this.height = height;
+        this.sidea=sidea;
+        this.sideb = sideb;
+        this.sidec=sidec;
     }
 
     @Override
-    public int calculateArea() {
-
-        return getHeigth()*getWidth()/2;
+    public double calculateArea() {
+        return this.height * this.width / 2;
     }
 
     @Override
-    public int calculatePerimeter() {
-        int sidea = 3;
-        int sideb=  4;
-        int sidec=  5;
+    public double calculatePerimeter() {
         return sidea+sideb+sidec;
     }
 }

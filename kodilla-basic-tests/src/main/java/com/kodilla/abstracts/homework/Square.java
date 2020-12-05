@@ -1,23 +1,23 @@
 package com.kodilla.abstracts.homework;
 
 public class Square extends Shape {
+    private double side;
 
-    public Square(int width, int heigth) {
-
-        super( width, heigth);
+    public Square(double side){
+       this.side=side;
     }
 
     @Override
-        public int calculateArea(){
-        return getWidth()*getHeigth();
-        }
+    public double calculateArea() {
+        return side*side;
+    }
 
     @Override
-    public int calculatePerimeter() {
-
-        return getWidth()*4;
+    public double calculatePerimeter() {
+        return side*4;
     }
 }
+
 
 
 
