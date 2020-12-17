@@ -35,7 +35,7 @@ public class Bank {
             double sum = 0;
             for (int i = 0; i < this.cashMachines.length; i++) {
                 sum += this.cashMachines[i].getAverageAtmsDeposit();
-            }
+        }
             return sum/ (double) this.cashMachines.length;
     }
 
@@ -54,14 +54,14 @@ public class Bank {
         public double getAtmsBalance () {
                 double bankBalance=0;
 
-            for (int i = 0; i < this.cashMachines.length; i++) {
-                CashMachine cashMachine = this.cashMachines[i];
-                double atmBalance = cashMachine.getBalance();
-                bankBalance += atmBalance;
-            }
-            return bankBalance;
+        for (int i = 0; i < this.cashMachines.length; i++) {
+             CashMachine cashMachine = this.cashMachines[i];
+             double atmBalance = cashMachine.getBalance();
+             bankBalance += atmBalance;
         }
+            return bankBalance;
     }
+}
 
 
 

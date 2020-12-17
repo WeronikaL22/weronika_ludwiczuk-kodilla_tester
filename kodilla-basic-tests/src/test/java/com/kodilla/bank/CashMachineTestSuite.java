@@ -86,5 +86,36 @@ public class CashMachineTestSuite {
         assertEquals(0, depositCount);
     }
 
+    @Test
+    public void WhenZeroAmountDeposited_ThenAverageAtmsDepositIsZero(){
+        CashMachine cashMachine = new CashMachine();
+        cashMachine.addTransaction(0);
+
+        double averageAtmsDeposit = cashMachine.getAverageAtmsDeposit();
+        assertEquals(0, averageAtmsDeposit);
+    }
+
+   @Test
+   public void WhenZeroAmountWithdrawn_ThenAverageAtmsWithdrawalIsZero(){
+       CashMachine cashMachine = new CashMachine();
+       cashMachine.addTransaction(0);
+
+       double averageAtmsWithdrawal =cashMachine.getAverageAtmsWithdrawal();
+       assertEquals(0,averageAtmsWithdrawal);
+
+    }
+    @Test
+    public void WhenAmountsDepositedAndWithdrawn_TheAverageDepositsAndWithdrawalsAreCalculatedSeparately(){
+        CashMachine cashMachine = new CashMachine();
+        cashMachine.addTransaction(56);
+        cashMachine.addTransaction(41);
+        cashMachine.addTransaction(-20);
+        cashMachine.addTransaction(-4);
+
+        double averageAtmsWithdrawal =cashMachine.getAverageAtmsWithdrawal();
+        assertEquals(-12,averageAtmsWithdrawal);
+        double averageAtmsDeposit = cashMachine.getAverageAtmsDeposit();
+        assertEquals(48.5,averageAtmsDeposit);
+    }
 
 }

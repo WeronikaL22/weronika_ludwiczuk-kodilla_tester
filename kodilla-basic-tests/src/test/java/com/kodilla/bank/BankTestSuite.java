@@ -104,7 +104,7 @@ public class BankTestSuite {
         cashMachine1.addTransaction(-10);
 
         CashMachine cashMachine2 = new CashMachine();
-        cashMachine2.addTransaction(30);
+        cashMachine2.addTransaction(50);
         cashMachine2.addTransaction(-30);
 
         cashMachines[0] = cashMachine1;
@@ -112,7 +112,7 @@ public class BankTestSuite {
 
         Bank bank = new Bank(cashMachines);
         double avgDeposit = bank.getAverageDeposit();
-        assertEquals(50, avgDeposit, 0.10);
+        assertEquals(56.6, avgDeposit, 0.10);
         double avgWithdrawal = bank.getAverageWithdrawal();
         assertEquals(-16.6, avgWithdrawal,0.01);
     }
