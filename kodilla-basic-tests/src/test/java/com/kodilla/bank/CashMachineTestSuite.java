@@ -85,4 +85,6 @@ public class CashMachineTestSuite {
         int depositCount = cashMachine.getDepositCount();
         assertEquals(0, depositCount);
     }
+
+
 }

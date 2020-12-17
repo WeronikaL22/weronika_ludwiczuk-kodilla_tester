@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class BankTestSuite {
 
     @Test
-    public void WhenBankWithTwoEmptyCashMachinesCreated_ThenBalanceIsZero (){
+    public void WhenBankWithTwoEmptyCashMachinesCreated_ThenBalanceIsZero() {
         CashMachine[] cashMachines = new CashMachine[2];
         cashMachines[0] = new CashMachine();
         cashMachines[1] = new CashMachine();
@@ -20,7 +20,7 @@ public class BankTestSuite {
     }
 
     @Test
-    public void WhenBankWithTwoEmptyCashMachinesCreated_ThenAverageDepositAndWithdrawalAreZero (){
+    public void WhenBankWithTwoEmptyCashMachinesCreated_ThenAverageDepositAndWithdrawalAreZero() {
         CashMachine[] cashMachines = new CashMachine[2];
         cashMachines[0] = new CashMachine();
         cashMachines[1] = new CashMachine();
@@ -93,4 +93,29 @@ public class BankTestSuite {
         assertEquals(2, withdrawalCount);
     }
 
+    @Test
+    public void WhenTwoNonEmptyCashMachinesCreated_ThenTheAverageBankDepositAndWithdrawalAreTheSumOfAverageAtmsDepositsAndWithdrawals() {
+        CashMachine[] cashMachines = new CashMachine[2];
+
+        CashMachine cashMachine1 = new CashMachine();
+        cashMachine1.addTransaction(100);
+        cashMachine1.addTransaction(20);
+        cashMachine1.addTransaction(-10);
+        cashMachine1.addTransaction(-10);
+
+        CashMachine cashMachine2 = new CashMachine();
+        cashMachine2.addTransaction(30);
+        cashMachine2.addTransaction(-30);
+
+        cashMachines[0] = cashMachine1;
+        cashMachines[1] = cashMachine2;
+
+        Bank bank = new Bank(cashMachines);
+        double avgDeposit = bank.getAverageDeposit();
+        assertEquals(50, avgDeposit, 0.10);
+        double avgWithdrawal = bank.getAverageWithdrawal();
+        assertEquals(-16.6, avgWithdrawal,0.01);
+    }
 }
+
+

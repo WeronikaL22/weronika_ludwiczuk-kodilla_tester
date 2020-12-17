@@ -15,6 +15,7 @@ public class CashMachine {
     private double[] transactions;
 
     public double getBalance() {
+
         return this.balance;
     }
 
@@ -24,7 +25,29 @@ public class CashMachine {
 
     public int getWithdrawalCount() {
         return this.withdrawalCount;
+    }
+    public double getAverageAtmsDeposit() {
+        int count = 0;
+        double sum = 0;
+        for(int i = 0; i < this.transactions.length; i++) {
+            if(this.transactions[i] > 0) {
+                count++;
+                sum +=   this.transactions[i];
+            }
+        }
+        return sum/(double)count;
+    }
 
+    public double getAverageAtmsWithdrawal() {
+        int count = 0;
+        double sum = 0;
+        for(int i = 0; i < this.transactions.length; i++) {
+            if(this.transactions[i] < 0) {
+                count++;
+                sum +=   this.transactions[i];
+            }
+        }
+        return sum/(double)count;
     }
 
     public void addTransaction(double transactionAmount) {
@@ -33,21 +56,19 @@ public class CashMachine {
             return;
         }
 
-        if(transactionAmount == 0) {
+        if (transactionAmount == 0) {
             return;
         }
 
-        if(transactionAmount > 0) {
+        if (transactionAmount > 0) {
             this.depositCount++;
         }
 
-        if(transactionAmount < 0) {
+        if (transactionAmount < 0) {
             this.withdrawalCount++;
         }
 
         this.balance += transactionAmount;
-
-        // Store new transaction in array (make array bigger)
         double[] newTab = new double[this.depositCount + this.withdrawalCount];
         System.arraycopy(this.transactions, 0, newTab, 0, this.transactions.length);
         newTab[this.depositCount + this.withdrawalCount - 1] = transactionAmount;
@@ -55,4 +76,7 @@ public class CashMachine {
     }
 
 }
+
+
+
 
