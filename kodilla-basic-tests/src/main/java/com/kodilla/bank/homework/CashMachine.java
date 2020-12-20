@@ -14,6 +14,10 @@ public class CashMachine {
     private int withdrawalCount;
     private double[] transactions;
 
+    public double[] getTransactions() {
+        return this.transactions;
+    }
+
     public double getBalance() {
 
         return this.balance;
@@ -27,62 +31,31 @@ public class CashMachine {
         return this.withdrawalCount;
     }
 
-    public double getAverageAtmsDeposit() {
-        if (this.transactions.length == 0) {
-            return 0;}
+    public void addTransaction ( double transactionAmount){
 
-            int count = 0;
-            double sum = 0;
-            for (int i = 0; i < this.transactions.length; i++) {
-                if (this.transactions[i] > 0) {
-                    count++;
-                    sum += this.transactions[i];
-                }
-            }
-            return sum / (double) count;
+        if (this.balance + transactionAmount < 0) {
+            return;
         }
 
-        public double getAverageAtmsWithdrawal () {
-            if (this.transactions.length == 0) {
-                return 0;}
-
-            int count = 0;
-            double sum = 0;
-            for (int i = 0; i < this.transactions.length; i++) {
-                if (this.transactions[i] < 0) {
-                    count++;
-                    sum += this.transactions[i];
-                }
-            }
-            return sum / (double) count;
+        if (transactionAmount == 0) {
+            return;
         }
 
-        public void addTransaction ( double transactionAmount){
-
-            if (this.balance + transactionAmount < 0) {
-                return;
-            }
-
-            if (transactionAmount == 0) {
-                return;
-            }
-
-            if (transactionAmount > 0) {
-                this.depositCount++;
-            }
-
-            if (transactionAmount < 0) {
-                this.withdrawalCount++;
-            }
-
-            this.balance += transactionAmount;
-            double[] newTab = new double[this.depositCount + this.withdrawalCount];
-            System.arraycopy(this.transactions, 0, newTab, 0, this.transactions.length);
-            newTab[this.depositCount + this.withdrawalCount - 1] = transactionAmount;
-            this.transactions = newTab;
+        if (transactionAmount > 0) {
+            this.depositCount++;
         }
 
+        if (transactionAmount < 0) {
+            this.withdrawalCount++;
+        }
+
+        this.balance += transactionAmount;
+        double[] newTab = new double[this.depositCount + this.withdrawalCount];
+        System.arraycopy(this.transactions, 0, newTab, 0, this.transactions.length);
+        newTab[this.depositCount + this.withdrawalCount - 1] = transactionAmount;
+        this.transactions = newTab;
     }
+}
 
 
 

@@ -29,26 +29,46 @@ public class Bank {
     }
 
     public double getAverageDeposit() {
-        if (this.cashMachines.length == 0) {
-            return 0;}
+        double sum = 0;
+        int numberOfDeposits = 0;
 
-            double sum = 0;
-            for (int i = 0; i < this.cashMachines.length; i++) {
-                sum += this.cashMachines[i].getAverageAtmsDeposit();
+        for(int i = 0; i < this.cashMachines.length; i++) {
+            double[] transactions = this.cashMachines[i].getTransactions();
+            for(int j = 0; j < transactions.length; j++) {
+                if(transactions[j] > 0) { // if it a deposit
+                    sum += transactions[j];
+                    numberOfDeposits++;
+                }
+            }
         }
-            return sum/ (double) this.cashMachines.length;
+
+        if(numberOfDeposits == 0) {
+            return 0;
+        }
+
+        return sum / (double) numberOfDeposits;
     }
 
-     public double getAverageWithdrawal(){
-         if (this.cashMachines.length == 0) {
-             return 0;}
-
+     public double getAverageWithdrawal() {
          double sum = 0;
-         for (int i = 0; i < this.cashMachines.length; i++) {
-             sum += this.cashMachines[i].getAverageAtmsWithdrawal();
+         int numberOfWithdrawals = 0;
+
+         for(int i = 0; i < this.cashMachines.length; i++) {
+             double[] transactions = this.cashMachines[i].getTransactions();
+             for(int j = 0; j < transactions.length; j++) {
+                 if(transactions[j] < 0) { // if it a withdrawal
+                     sum += transactions[j];
+                     numberOfWithdrawals++;
+                 }
+             }
          }
-         return sum/ (double) this.cashMachines.length;
-    }
+
+         if(numberOfWithdrawals == 0) {
+             return 0;
+         }
+
+         return sum / (double) numberOfWithdrawals;
+     }
 
 
         public double getAtmsBalance () {

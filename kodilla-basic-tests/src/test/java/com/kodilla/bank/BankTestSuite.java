@@ -114,7 +114,7 @@ public class BankTestSuite {
         double avgDeposit = bank.getAverageDeposit();
         assertEquals(56.6, avgDeposit, 0.10);
         double avgWithdrawal = bank.getAverageWithdrawal();
-        assertEquals(-16.6, avgWithdrawal,0.01);
+        assertEquals(-16.6, avgWithdrawal,0.10);
     }
 }
 
