@@ -2,14 +2,17 @@ package com.kodilla.collections.interfaces.homework;
 
 public class Mercedes implements Car {
 
-    private int speed=0;
-    ;
+    private int speed;
 
     public Mercedes() {
-        this.speed = speed;
     }
-    public void increaseSpeed(){
+
+    public void increaseSpeed() {
         speed += 20;
+    }
+
+    public void increaseSpeed(int speedIncrease) {
+        speed += speedIncrease;
     }
 
     public void decreaseSpeed(){

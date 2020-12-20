@@ -1,15 +1,18 @@
 package com.kodilla.collections.interfaces.homework;
 
-public class Ford implements Car{
-    private int speed=0;
+public class Ford implements Car {
+
+    private int speed;
 
     public Ford() {
-
-        this.speed =speed;
     }
 
     public void increaseSpeed() {
         speed += 15;
+    }
+
+    public void increaseSpeed(int speedIncrease) {
+        speed += speedIncrease;
     }
 
     public void decreaseSpeed() {
