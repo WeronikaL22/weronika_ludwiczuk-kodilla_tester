@@ -13,21 +13,34 @@ public class Application {
         register.add(new Student("Kasia Cichopek", new Teacher("Grzegorz")));
         register.add(new Student("Marcin Najman", null));
 
-        var studentsWithTeachers = register
+        var studentsInfo = register
             .stream()
-            .filter(student -> Optional.ofNullable(student.getTeacher()).isPresent()) //  wyfiltruj tych co mają teachera
-            .map(student -> "Student '" + student.getName() + "'; Teacher '" + student.getTeacher().getName() + "'")
-            .collect(Collectors.toList());
+                .map(student -> "Student: " + student.getName() +  "; Teacher: " +
+                                Optional.ofNullable(student.getTeacher())
+                                        .map(Teacher::getName)
+                                        .orElse("<undefined>"))
+                .collect(Collectors.toList());
+        System.out.println(studentsInfo);
 
-        System.out.println(studentsWithTeachers);
 
-        var studentsWithoutTeachers = register
-            .stream()
-            .filter(student -> Optional.ofNullable(student.getTeacher()).isEmpty())
-            .map(student -> "Student '" + student.getName() + "'; Teacher <undefined>")
-            .collect(Collectors.toList());
 
-        System.out.println(studentsWithoutTeachers);
+
+
+        // var studentsWithTeachers = register
+         //   .stream()
+           // .filter(student -> Optional.ofNullable(student.getTeacher()).isPresent()) //  wyfiltruj tych co mają teachera
+           // .map(student -> "Student '" + student.getName() + "'; Teacher '" + student.getTeacher().getName() + "'")
+           // .collect(Collectors.toList());
+
+        //System.out.println(studentsWithTeachers);
+
+        //var studentsWithoutTeachers = register
+          //  .stream()
+            //.filter(student -> Optional.ofNullable(student.getTeacher()).isEmpty())
+            //.map(student -> "Student '" + student.getName() + "'; Teacher <undefined>")
+            //.collect(Collectors.toList());
+
+        //System.out.println(studentsWithoutTeachers);
 
 
         //for(Student student: register) {
