@@ -20,7 +20,6 @@ public class Warehouse {
         if(result.isEmpty()) {
             throw new OrderDoesntExistException();
         }
-
         return result.get();
     }
 }
