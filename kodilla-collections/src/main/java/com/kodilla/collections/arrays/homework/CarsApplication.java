@@ -12,7 +12,7 @@ public class CarsApplication {
         Random random = new Random();
         int arrayLength = random.nextInt(15) + 1;
 
-        Car [] cars = new Car[arrayLength];
+        Car[] cars = new Car[arrayLength];
 
         System.out.println(arrayLength + " cars.");
 
@@ -20,6 +20,8 @@ public class CarsApplication {
             cars[n] = drawCar();
         for (Car car : cars)
             CarUtils.describeCar(car);
+
+
 
     }
 
@@ -31,9 +33,9 @@ public class CarsApplication {
         if (drawnCarKind == 0)
             car = new Ford();
         else if (drawnCarKind == 1)
-            car =  new Mercedes();
+            car = new Mercedes();
         else
-            car =  new Skoda();
+            car = new Skoda();
 
         int randomSpeedIncrease = random.nextInt(30);
 
@@ -42,4 +44,5 @@ public class CarsApplication {
         return car;
     }
 }
+
 

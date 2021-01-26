@@ -13,7 +13,6 @@ public class FlightRepository {
         result.add(new Flight("Paris", "Dubai"));
         result.add(new Flight("Paris", "Madrid"));
 
-
         return result;
     }
 }

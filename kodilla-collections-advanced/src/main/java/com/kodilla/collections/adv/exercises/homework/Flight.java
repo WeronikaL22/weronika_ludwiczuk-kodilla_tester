@@ -27,10 +27,12 @@ public class Flight {
     }
 
     public String getDeparture() {
+
         return departure;
     }
 
     public String getArrival() {
+
         return arrival;
     }
 }

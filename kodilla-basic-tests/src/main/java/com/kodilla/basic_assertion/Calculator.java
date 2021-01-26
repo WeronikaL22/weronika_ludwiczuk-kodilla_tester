@@ -10,7 +10,8 @@ public class Calculator {
         }
 
        public int power(int a){
-            return a*a;
+
+        return a*a;
        }
     }
 

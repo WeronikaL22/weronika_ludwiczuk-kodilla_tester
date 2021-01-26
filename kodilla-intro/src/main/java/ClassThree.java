@@ -25,7 +25,7 @@ public class ClassThree {
         for (int i = 0; i < users.length; i++) {
             int currentUserAge = users[i].getAge();
             if (currentUserAge < averageAge) {
-                System.out.println(users[i].getName());
+               System.out.println(users[i].getName());
             }
         }
     }

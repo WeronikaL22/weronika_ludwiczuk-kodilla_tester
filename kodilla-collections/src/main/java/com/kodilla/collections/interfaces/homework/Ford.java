@@ -5,9 +5,11 @@ public class Ford implements Car {
     private int speed;
 
     public Ford() {
+
     }
 
     public void increaseSpeed() {
+
         speed += 15;
     }
 
@@ -16,10 +18,12 @@ public class Ford implements Car {
     }
 
     public void decreaseSpeed() {
+
         speed -= 5;
     }
 
     public int getSpeed() {
+
         return speed;
     }
 }

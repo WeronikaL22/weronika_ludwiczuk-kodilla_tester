@@ -23,7 +23,6 @@ public class SchoolDirectory {
         register.put(Thomas,ThomasSchool);
 
 
-
         for (Map.Entry<Principal, School> principalEntry : register.entrySet())
            System.out.println("Principal "+ principalEntry.getKey().getNameAndSurname() +
                    " works in " +principalEntry.getKey().getSchoolName() + ". " + "Number of all students in the school is:  "

@@ -27,7 +27,7 @@ public class Grades {
 
 
         for (int i = 0; i < grades.length; i++) {
-            sum += this.grades[i];
+            sum += this.grades[i];   ////i
         }
         return (this.size == 0) ? 0 : (double)sum/(double)this.size;
 

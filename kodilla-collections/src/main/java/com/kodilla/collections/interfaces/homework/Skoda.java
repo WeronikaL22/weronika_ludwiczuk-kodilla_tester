@@ -8,18 +8,22 @@ public class Skoda implements Car {
     }
 
     public void increaseSpeed(){
+
         speed += 10;
     }
 
     public void increaseSpeed(int speedIncrease) {
+
         speed += speedIncrease;
     }
 
     public void decreaseSpeed(){
+
         speed -= 5;
     }
 
     public int getSpeed(){
+
         return speed;
     };
 }
