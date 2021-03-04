@@ -5,7 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 public class AllegroTestingApp {
 
@@ -17,21 +21,27 @@ public class AllegroTestingApp {
         Alert alert = driver.switchTo().alert();
         alert.accept();
 
-
         WebElement agreeToCookies = driver.findElement(
-                By.xpath("//div[@class=\"_854c2_OPWNL _9f0v0 _jkrtd mj7a_0 mh36_16 mvrt_16 mg9e_16 mpof_ki m389_6m munh_56 m3h2_56 myre_zn myre_8v_s m7f5_5x_s _854c2_21ZR4\"]" + "//button[1]"));
+                By.cssSelector(".m3h2_16 > button"));
         agreeToCookies.click();
 
 
         WebElement category = driver.findElement(
-                By.xpath("//select[@class=\"mr3m_1 m7er_k4 _k70df mgn2_14 mp0t_0a mqu1_21 mgmw_wo mli8_k4 _d25db_an94v\"]@data-role"));
+                By.cssSelector("div > select"));
         Select chooseCATEGORY= new Select(category);
         chooseCATEGORY.selectByIndex(2);
 
-
-        WebElement inputField = driver.findElement(By.xpath("//div/form[@novalidate=\"\"]/input[@type=\"search\"]"));
+        WebElement inputField = driver.findElement(By.cssSelector("div > form > input"));
         inputField.sendKeys("Mavic mini");
         inputField.submit();
+
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("article > div")));
+
+        List<WebElement> elements = driver.findElements(By.className("mgn2_13 mqu1_ae mp0t_0a mgmw_ia mli8_k4 _9c44d_3UsPL"));
+        elements.get(0).getText();
+        elements.get(1).getText();
+        elements.get(2).getText();
 
     }
 }
