@@ -16,24 +16,32 @@ public class GoogleSearch extends AbstractPage {
 
     @FindBy(css = "input[value='Szukaj w Google']")
     static List<WebElement> searchButton;
-    private GoogleResults googleResults;
+
+    @FindBy(tagName = "form")
+    static WebElement acceptCookiesButton;
 
     public GoogleSearch(WebDriver driver) {
         super(driver);
     }
 
-    public void searchResults() {
+    public GoogleResults getSearchResults() {
         PageFactory.initElements(driver, GoogleSearch.class);
+        //acceptDamnCookies(driver);
         inputField.sendKeys("Kodilla");
-        googleResults = loadResults(driver);
-        googleResults.iSeeResults();
+        GoogleResults googleResults = loadResults(driver);
+
+        return googleResults;
     }
 
-    public GoogleResults loadResults(WebDriver driver) {
+    /*private void acceptDamnCookies(WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.elementToBeClickable(acceptCookiesButton)).submit();
+    }*/
+
+    private GoogleResults loadResults(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(searchButton.get(0))).click();
         GoogleResults googleResults = new GoogleResults(driver);
         return googleResults;
     }
-
 }
