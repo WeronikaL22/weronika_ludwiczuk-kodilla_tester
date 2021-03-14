@@ -6,11 +6,13 @@ public class Cashier {
         this.cashSlot = cashSlot;
     }
 
-    public void withdraw(Wallet wallet, int amount){
-       if(amount > wallet.getBalance())
-           System.out.println("Insufficient Funds");
-
-       else
-            cashSlot.dispense(amount);
+    public String withdraw(Wallet wallet, int amount) {
+        if (amount > wallet.getBalance())
+            return "You have insufficient funds to withdraw money";
+        else
+            wallet.debit(amount);
+        cashSlot.dispense(amount);
+        return "You balance is" + wallet.getBalance() + "You can withdraw money";
     }
+
 }
